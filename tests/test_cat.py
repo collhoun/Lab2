@@ -1,6 +1,7 @@
 import pytest
 from src.cat import do_cat
 from src.hepl_func import create_folder_for_tests, delete_folder_for_tests
+import os
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -39,7 +40,8 @@ def test_do_cat_2(capsys):
 
 
 def test_do_cat_3(capsys):
-    do_cat('C:\\Users\\Huawei\\python_programming\\python_labs\\Lab2\\tests\\folder_for_tests\\folder_for_rm\\one_1.txt')
+    cur_dir = os.getcwd()
+    do_cat(f'{cur_dir}\\tests\\folder_for_tests\\folder_for_rm\\one_1.txt')
     # перехват выходного потока в переменную capture
     capture = capsys.readouterr()
     assert capture.out == 'another one\n'

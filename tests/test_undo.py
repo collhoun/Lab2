@@ -5,6 +5,7 @@ from src.cp import do_cp
 from src.move import do_move
 import pytest
 import os
+import shutil
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -12,6 +13,8 @@ def test_lifecycle():
     create_folder_for_tests()
     yield
     delete_folder_for_tests()
+    if os.path.exists('src\\.trash'):
+        shutil.rmtree('src\\.trash')
 
 
 def test_undo_valuerr():
