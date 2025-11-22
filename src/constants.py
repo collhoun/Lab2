@@ -8,6 +8,7 @@ from src.zipper import do_zip, do_tar, do_unzip, do_untar
 from src.grep import do_grep
 from src.history import do_history
 from src.undo import do_undo
+import os
 
 COMMANDS_DICTIONARY: dict = {
     'cat': do_cat,
@@ -24,3 +25,5 @@ COMMANDS_DICTIONARY: dict = {
     'history': do_history,
     'undo': do_undo
 }
+
+PATH_TO_HISTORY: str = os.getcwd()

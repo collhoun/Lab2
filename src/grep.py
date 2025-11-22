@@ -38,8 +38,8 @@ def do_grep(pattern: str, path: str, option: str = '') -> None:
             pass
         elif option == '-i':
             for file in os.listdir(path):
-                if os.path.isfile(f'{path}\\{file}'):
-                    with open(f'{path}\\{file}', 'r', encoding='utf-8') as reading_file:
+                if os.path.isfile(f'{path}/{file}'):
+                    with open(f'{path}/{file}', 'r', encoding='utf-8') as reading_file:
                         string_number = 0
                         for string in map(str.lower, reading_file.readlines()):
                             string_number += 1
@@ -49,8 +49,8 @@ def do_grep(pattern: str, path: str, option: str = '') -> None:
                         logger.info("grep %s %s %s", pattern, path, option)
     else:
         for file in os.listdir(path):
-            if os.path.isfile(f'{path}\\{file}'):
-                with open(f'{path}\\{file}', 'r', encoding='utf-8') as reading_file:
+            if os.path.isfile(f'{path}/{file}'):
+                with open(f'{path}/{file}', 'r', encoding='utf-8') as reading_file:
                     string_number = 0
                     for string in reading_file.readlines():
                         string_number += 1
@@ -58,8 +58,3 @@ def do_grep(pattern: str, path: str, option: str = '') -> None:
                             print(
                                 f'filename = {file}, string number = {string_number}, pattern = {pattern}')
                     logger.info("grep %s %s %s", pattern, path)
-
-
-if __name__ == '__main__':
-    do_grep('another one', 'folder_for_tests', '-r')
-    pass

@@ -24,12 +24,12 @@ def test_ls_valueerr():
 
 def test_ls_typeerr():
     with pytest.raises(TypeError) as e:
-        do_ls('src\\main.py', '-l')
-    assert 'Файл src\\main.py является файлом, а не каталогом' == e.value.args[0]
+        do_ls('src/main.py', '-l')
+    assert 'Файл src/main.py является файлом, а не каталогом' == e.value.args[0]
 
 
 def test_ls_usual(capsys):
-    do_ls('tests\\folder_for_tests\\folder_for_rm')
+    do_ls('tests/folder_for_tests/folder_for_rm')
     # перехват выходного потока в переменную capture
     capture = capsys.readouterr()
     assert capture.out == 'one_1.txt\ntwo_2.txt\n'

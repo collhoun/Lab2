@@ -33,13 +33,13 @@ def do_cp(file_for_copy: str, target_dir: str, option: str = '') -> None:
     if option:
         if option == '-r':
             if os.path.isdir(file_for_copy):
-                if '\\' in file_for_copy:
-                    dir_name = file_for_copy.split('\\')[-1]
+                if '/' in file_for_copy:
+                    dir_name = file_for_copy.split('/')[-1]
                 else:
                     dir_name = file_for_copy
                 logger.info("cp -r %s %s", file_for_copy, target_dir)
                 shutil.copytree(
-                    file_for_copy, f'{target_dir}\\{dir_name}')
+                    file_for_copy, f'{target_dir}/{dir_name}')
             else:
                 logger.error(
                     "Ошибка: Невозможно применить рекурсивное копирование к файлу %s", file_for_copy)
@@ -57,8 +57,3 @@ def do_cp(file_for_copy: str, target_dir: str, option: str = '') -> None:
                 "Ошибка: невозможно нерекурсивно скопировать папку %s", file_for_copy)
             raise TypeError(
                 f'Невозможно нерекурсивно скопировать папку {file_for_copy}')
-
-
-if __name__ == '__main__':
-    do_cp('folder_for_tests\\some.txt',
-          'folder_for_tests\\folder_for_zip_and_tar')

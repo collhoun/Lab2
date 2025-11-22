@@ -29,7 +29,3 @@ def do_move(file_to_move: str, target_dir: str) -> None:
 
         logger.info("mv %s %s", file_to_move, target_dir)
         shutil.move(file_to_move, target_dir)
-
-
-if __name__ == '__main__':
-    pass

@@ -80,22 +80,18 @@ def write_trash_file(path_to_file_to_remove: str, option: str = ''):
         option (str, optional): if user wants to remove whole dir he uses '-r' option. Defaults to ''.
     """
     try:
-        if os.path.exists('src\\.trash'):
-            do_cp(path_to_file_to_remove, 'src\\.trash', option)
+        if os.path.exists('src/.trash'):
+            do_cp(path_to_file_to_remove, 'src/.trash', option)
         else:
-            os.mkdir('src\\.trash')
-            do_cp(path_to_file_to_remove, 'src\\.trash', option)
+            os.mkdir('src/.trash')
+            do_cp(path_to_file_to_remove, 'src/.trash', option)
     except FileExistsError:
-        if '\\' in path_to_file_to_remove:
-            filename = path_to_file_to_remove.split('\\')[-1]
+        if '/' in path_to_file_to_remove:
+            filename = path_to_file_to_remove.split('/')[-1]
         else:
             filename = path_to_file_to_remove
         if option:
-            shutil.rmtree(f'src\\.trash\\{filename}')
+            shutil.rmtree(f'src/.trash/{filename}')
         else:
-            os.remove(f'src\\.trash\\{filename}')
-        do_cp(path_to_file_to_remove, 'src\\.trash', option)
-
-
-if __name__ == '__main__':
-    do_rm('folder_for_tests\\folder_for_rm', '-r')
+            os.remove(f'src/.trash/{filename}')
+        do_cp(path_to_file_to_remove, 'src/.trash', option)

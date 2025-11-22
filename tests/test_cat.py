@@ -13,8 +13,8 @@ def test_lifecycle():
 
 def test_cat_filenotfound():
     with pytest.raises(FileNotFoundError) as e:
-        do_cat('tests\\double.py')
-    assert "Файла tests\\double.py не существует в текущем каталоге" == e.value.args[
+        do_cat('tests/double.py')
+    assert "Файла tests/double.py не существует в текущем каталоге" == e.value.args[
         0]
 
 
@@ -26,14 +26,14 @@ def test_cat_valuserr():
 
 
 def test_do_cat_1(capsys):
-    do_cat('tests\\folder_for_tests\\some.txt')
+    do_cat('tests/folder_for_tests/some.txt')
     # перехват выходного потока в переменную capture
     capture = capsys.readouterr()
     assert capture.out == 'something\n'
 
 
 def test_do_cat_2(capsys):
-    do_cat('tests\\folder_for_tests\\folder_for_rm\\one_1.txt')
+    do_cat('tests/folder_for_tests/folder_for_rm/one_1.txt')
     # перехват выходного потока в переменную capture
     capture = capsys.readouterr()
     assert capture.out == 'another one\n'
@@ -41,7 +41,7 @@ def test_do_cat_2(capsys):
 
 def test_do_cat_3(capsys):
     cur_dir = os.getcwd()
-    do_cat(f'{cur_dir}\\tests\\folder_for_tests\\folder_for_rm\\one_1.txt')
+    do_cat(f'{cur_dir}/tests/folder_for_tests/folder_for_rm/one_1.txt')
     # перехват выходного потока в переменную capture
     capture = capsys.readouterr()
     assert capture.out == 'another one\n'

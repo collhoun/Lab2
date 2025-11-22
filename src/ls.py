@@ -74,8 +74,3 @@ def show_ls(list_of_files: list, option: str = '', directory_path: str = '.') ->
 
 def do_ls(directory_path: str = '.', option: str = '') -> None:
     show_ls(make_ls(option, directory_path))
-
-
-if __name__ == '__main__':
-    do_ls('folder_for_tests\\folder_for_rm')
-    pass

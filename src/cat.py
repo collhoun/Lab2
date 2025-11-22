@@ -33,7 +33,3 @@ def do_cat(filename: str) -> str:  # type: ignore
                 'Ошибка: имя %s не является файлом. Невозможно отобразить информацию', filename)
             raise ValueError(
                 f"Имя {filename} не является файлом. Невозможно отобразить информацию")
-
-
-if __name__ == '__main__':
-    print(do_cat('src\\main.py'))

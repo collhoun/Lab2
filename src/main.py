@@ -2,11 +2,13 @@ import re
 import os
 from logging import getLogger, basicConfig, DEBUG
 from src.hepl_func import tokenizator
-from constants import COMMANDS_DICTIONARY
+from src.constants import COMMANDS_DICTIONARY, PATH_TO_HISTORY
 from src.history import write_history_file
+
+
 logger = getLogger()
 format = '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
-basicConfig(filename='src\\shell.log', encoding='utf-8',
+basicConfig(filename='src/shell.log', encoding='utf-8',
             level=DEBUG, format=format, filemode='w')
 
 
@@ -35,12 +37,12 @@ def main() -> None:
                 option, *tokens_list = tokens_list
                 COMMANDS_DICTIONARY[command](
                     *tokens_list, option=option)
-                write_history_file(command)
+                write_history_file(command, PATH_TO_HISTORY)
                 print(os.getcwd())
                 print('\n')
             else:
                 COMMANDS_DICTIONARY[command](*tokens_list)
-                write_history_file(command)
+                write_history_file(command, PATH_TO_HISTORY)
                 print(os.getcwd())
                 print('\n')
         except ValueError as v:
@@ -55,8 +57,6 @@ def main() -> None:
             print(e)
         finally:
             expression = input()
-            # print(dict_of_commands_for_undo)
-            # print(tokens_list)
 
 
 if __name__ == "__main__":

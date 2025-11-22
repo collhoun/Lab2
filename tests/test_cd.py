@@ -13,20 +13,20 @@ def test_lifecycle():
 
 def test_cd_filenotfound():
     with pytest.raises(FileNotFoundError) as e:
-        do_cd('tests\\some')
+        do_cd('tests/some')
     assert 'Попытка перейти в несуществующий каталог' == e.value.args[0]
 
 
 def test_cd_typeerr():
     with pytest.raises(TypeError) as e:
-        do_cd('src\\cd.py')
-    assert 'Имя src\\cd.py не является каталогом' == e.value.args[0]
+        do_cd('src/cd.py')
+    assert 'Имя src/cd.py не является каталогом' == e.value.args[0]
 
 
 def test_cd_up():
-    cur_dir = os.getcwd().split('\\')[:-1]
+    cur_dir = os.getcwd().split('/')[:-1]
     do_cd('..')
-    new_dir = os.getcwd().split('\\')
+    new_dir = os.getcwd().split('/')
     os.chdir('Lab2')
     assert cur_dir == new_dir
 
@@ -34,15 +34,15 @@ def test_cd_up():
 def test_cd_home():
     cur_path = os.path.abspath('.')
     do_cd('~')
-    home_dir = os.getcwd().split('\\')[-2]
+    home_dir = os.getcwd().split('/')[-2]
     os.chdir(cur_path)
     assert home_dir == 'Users'
 
 
 def test_cd_usual():
     base_abs_path = os.path.abspath('.')
-    do_cd('tests\\folder_for_tests\\folder_for_rm')
-    target_abs_cur_path = f'{base_abs_path}\\tests\\folder_for_tests\\folder_for_rm'
+    do_cd('tests/folder_for_tests/folder_for_rm')
+    target_abs_cur_path = f'{base_abs_path}/tests/folder_for_tests/folder_for_rm'
     cur_path = os.getcwd()
     os.chdir(base_abs_path)
     assert target_abs_cur_path == cur_path

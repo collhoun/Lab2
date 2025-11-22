@@ -127,11 +127,3 @@ def do_untar(tar_folder: str, path_to_unpack: str = '.') -> None:
         logger.info('Архив %s распакован в папку %s',
                     tar_folder, path_to_unpack)
         tar.extractall(path=path_to_unpack, filter='fully_trusted')
-
-
-if __name__ == '__main__':
-    # do_zip('some', 'some.zip')
-    # do_unzip('some.zip')
-    # do_tar(r'C:\Users\Huawei\python_programming\python_labs\Lab2\some', 'some.tar.gz')
-    # do_unzip('some.zip', 'src')
-    pass

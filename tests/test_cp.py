@@ -13,20 +13,20 @@ def test_lifecycle():
 
 def test_cp_filenotfound_1():
     with pytest.raises(FileNotFoundError) as e:
-        do_cp('src\\cats.py', 'tests')
-    assert 'Такого src\\cats.py файла не существует' == e.value.args[0]
+        do_cp('src/cats.py', 'tests')
+    assert 'Такого src/cats.py файла не существует' == e.value.args[0]
 
 
 def test_cp_filenotfound_2():
     with pytest.raises(FileNotFoundError) as e:
-        do_cp('src\\cat.py', 'testes')
+        do_cp('src/cat.py', 'testes')
     assert 'Такого testes каталога не существует' == e.value.args[0]
 
 
 def test_cp_typeerr1():
     with pytest.raises(TypeError) as e:
-        do_cp('src\\cat.py', 'tests', '-r')
-    assert 'Невозможно применить рекурсивное копирование к файлу src\\cat.py, а не каталогу' == e.value.args[
+        do_cp('src/cat.py', 'tests', '-r')
+    assert 'Невозможно применить рекурсивное копирование к файлу src/cat.py, а не каталогу' == e.value.args[
         0]
 
 
@@ -45,20 +45,20 @@ def test_cp_valueerr():
 
 
 def test_cp_rec():
-    file_exists = os.path.exists('tests\\folder_for_tests\\folder_for_rm')
-    do_cp('tests\\folder_for_tests\\folder_for_rm',
-          'tests\\folder_for_tests\\folder_for_zip_and_tar', '-r')
+    file_exists = os.path.exists('tests/folder_for_tests/folder_for_rm')
+    do_cp('tests/folder_for_tests/folder_for_rm',
+          'tests/folder_for_tests/folder_for_zip_and_tar', '-r')
     post_file_exists = os.path.exists(
-        'tests\\folder_for_tests\\folder_for_zip_and_tar\\folder_for_rm')
+        'tests/folder_for_tests/folder_for_zip_and_tar/folder_for_rm')
     assert (file_exists and post_file_exists)
 
 
 def test_cp_not_rec():
-    file_exists = os.path.exists('tests\\folder_for_tests\\some.txt')
-    do_cp('tests\\folder_for_tests\\some.txt',
-          'tests\\folder_for_tests\\folder_for_zip_and_tar')
+    file_exists = os.path.exists('tests/folder_for_tests/some.txt')
+    do_cp('tests/folder_for_tests/some.txt',
+          'tests/folder_for_tests/folder_for_zip_and_tar')
     post_file_exists = os.path.exists(
-        'tests\\folder_for_tests\\folder_for_zip_and_tar\\some.txt')
+        'tests/folder_for_tests/folder_for_zip_and_tar/some.txt')
     assert (file_exists and post_file_exists)
 
 

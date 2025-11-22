@@ -42,18 +42,18 @@ def test_ls_typeerr():
 
 
 def test_rm_file():
-    before = os.path.exists('tests\\folder_for_tests\\some.txt')
-    do_rm('tests\\folder_for_tests\\some.txt')
-    after = not os.path.exists('tests\\folder_for_tests\\some.txt')
+    before = os.path.exists('tests/folder_for_tests/some.txt')
+    do_rm('tests/folder_for_tests/some.txt')
+    after = not os.path.exists('tests/folder_for_tests/some.txt')
     assert (before and after)
 
 
 def test_rm_dir(monkeypatch):
-    before = os.path.exists('tests\\folder_for_tests\\folder_for_rm')
+    before = os.path.exists('tests/folder_for_tests/folder_for_rm')
     # мокируем ввод на y
     monkeypatch.setattr("builtins.input", lambda _: "y")
-    do_rm('tests\\folder_for_tests\\folder_for_rm', '-r')
-    after = not os.path.exists('tests\\folder_for_tests\\folder_for_rm')
+    do_rm('tests/folder_for_tests/folder_for_rm', '-r')
+    after = not os.path.exists('tests/folder_for_tests/folder_for_rm')
     assert (before and after)
 
 

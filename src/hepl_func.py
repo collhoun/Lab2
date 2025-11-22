@@ -44,40 +44,35 @@ def tokenizator(expr: str) -> list:
 
 def create_folder_for_tests():
 
-    os.mkdir('tests\\folder_for_tests')
-    file = pathlib.Path('tests\\folder_for_tests\\some.txt')
+    os.mkdir('tests/folder_for_tests')
+    file = pathlib.Path('tests/folder_for_tests/some.txt')
     file.touch(exist_ok=True)
-    with open('tests\\folder_for_tests\\some.txt', 'w') as file:
+    with open('tests/folder_for_tests/some.txt', 'w') as file:
         file.write('something')
 
     # zipper
-    os.mkdir('tests\\folder_for_tests\\folder_for_zip_and_tar')
+    os.mkdir('tests/folder_for_tests/folder_for_zip_and_tar')
     file = pathlib.Path(
-        'tests\\folder_for_tests\\folder_for_zip_and_tar\\one.txt')
+        'tests/folder_for_tests/folder_for_zip_and_tar/one.txt')
     file.touch(exist_ok=True)
-    with open('tests\\folder_for_tests\\folder_for_zip_and_tar\\one.txt', 'w') as file:
+    with open('tests/folder_for_tests/folder_for_zip_and_tar/one.txt', 'w') as file:
         file.write('one txt lalalala')
     file = pathlib.Path(
-        'tests\\folder_for_tests\\folder_for_zip_and_tar\\two.txt')
+        'tests/folder_for_tests/folder_for_zip_and_tar/two.txt')
     file.touch(exist_ok=True)
-    with open('tests\\folder_for_tests\\folder_for_zip_and_tar\\two.txt', 'w') as file:
+    with open('tests/folder_for_tests/folder_for_zip_and_tar/two.txt', 'w') as file:
         file.write('two txt lalalla')
     # rm
-    os.mkdir('tests\\folder_for_tests\\folder_for_rm')
-    file = pathlib.Path('tests\\folder_for_tests\\folder_for_rm\\one_1.txt')
+    os.mkdir('tests/folder_for_tests/folder_for_rm')
+    file = pathlib.Path('tests/folder_for_tests/folder_for_rm/one_1.txt')
     file.touch(exist_ok=True)
-    with open('tests\\folder_for_tests\\folder_for_rm\\one_1.txt', 'w') as file:
+    with open('tests/folder_for_tests/folder_for_rm/one_1.txt', 'w') as file:
         file.write('another one')
-    file = pathlib.Path('tests\\folder_for_tests\\folder_for_rm\\two_2.txt')
+    file = pathlib.Path('tests/folder_for_tests/folder_for_rm/two_2.txt')
     file.touch(exist_ok=True)
-    with open('tests\\folder_for_tests\\folder_for_rm\\two_2.txt', 'w') as file:
+    with open('tests/folder_for_tests/folder_for_rm/two_2.txt', 'w') as file:
         file.write('antorher two')
 
 
 def delete_folder_for_tests():
-    shutil.rmtree('tests\\folder_for_tests')
-
-
-if __name__ == '__main__':
-    create_folder_for_tests()
-    pass
+    shutil.rmtree('tests/folder_for_tests')

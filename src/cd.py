@@ -36,9 +36,3 @@ def do_cd(path_to: str) -> None:
                 "Ошибка: попытка перейти в несуществующий каталог")
             raise FileNotFoundError(
                 'Попытка перейти в несуществующий каталог')
-
-
-if __name__ == '__main__':
-    print(os.getcwd())
-    do_cd('~')
-    print(os.getcwd())
